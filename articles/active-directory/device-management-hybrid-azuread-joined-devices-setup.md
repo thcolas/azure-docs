@@ -38,7 +38,7 @@ To improve the readability of the descriptions, this topic uses the following te
 ### Windows current devices
 
 - For devices running the Windows desktop operating system, we recommend using Windows 10 Anniversary Update (version 1607) or later. 
-- The registration of Windows current devices **is** supported in non-federated environments such as password hash sync configurations.  
+- The registration of Windows current devices **is** supported in non-federated environments such as password hash sync configurations or pass-through authentication.  
 
 
 ### Windows down-level devices
@@ -73,7 +73,7 @@ Use the following table to get an overview of the steps that are required for yo
 
 
 
-| Steps                                      | Windows current and password hash sync | Windows current and federation | Windows down-level |
+| Steps                                      | Windows current/down-level and password hash sync/pass-through auth | Windows current and federation | Windows down-level and federation|
 | :--                                        | :-:                                    | :-:                            | :-:                |
 | Step 1: Configure service connection point | ![Check][1]                            | ![Check][1]                    | ![Check][1]        |
 | Step 2: Setup issuance of claims           |                                        | ![Check][1]                    | ![Check][1]        |
@@ -569,7 +569,7 @@ The installer creates a scheduled task on the system that runs in the user’s c
 
 You can check successful joined devices in your organization by using the [Get-MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice) cmdlet in the [Azure Active Directory PowerShell module](/powershell/azure/install-msonlinev1?view=azureadps-2.0).
 
-The output of this cmdlet shows devices that are registered and joined with Azure AD. To get all devices, use the **-All** parameter, and then filter them using the **deviceTrustType** property. Domain joined devices have a value of **Domain Joined**.
+The output of this cmdlet shows devices that are registered and joined with Azure AD. To get all devices, use the **-All** parameter, and then filter them using the **deviceTrustType** property. Domain joined devices have a value of **Domain Joined**. However for Windows current machines, the AAD Connect server has to perform a synchronisation first.
 
 ## Next steps
 
